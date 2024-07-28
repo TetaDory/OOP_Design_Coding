@@ -1,16 +1,18 @@
+// Class represents a person with basic information
 class Person {
     constructor(id, name, email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+        this.id = id; //Unique Identifier
+        this.name = name; //Name of the person
+        this.email = email; //Email of the person
     }
 }
 
+// Class represents a student and extends the Person class
 class Student extends Person {
     constructor(id, name, email, studentId) {
         super(id, name, email);
         this.studentId = studentId;
-        this.room = null; // Initially, no room assigned
+        this.room = null; //no room assigned
     }
 
     assignRoom(room) {
