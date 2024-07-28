@@ -1,0 +1,74 @@
+class Person {
+    constructor(id, name, email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+}
+
+class Student extends Person {
+    constructor(id, name, email, studentId) {
+        super(id, name, email);
+        this.studentId = studentId;
+        this.room = null; // Initially, no room assigned
+    }
+
+    assignRoom(room) {
+        this.room = room;
+    }
+}
+
+class Residence {
+    constructor(name) {
+        this.name = name;
+        this.rooms = [];
+    }
+
+    addRoom(room) {
+        this.rooms.push(room);
+    }
+
+    findAvailableRoom() {
+        return this.rooms.find(room => room.isAvailable());
+    }
+}
+
+class Room {
+    constructor(number) {
+        this.number = number;
+        this.occupied = false;
+        this.student = null;
+    }
+
+    isAvailable() {
+        return !this.occupied;
+    }
+
+    assignStudent(student) {
+        if (this.isAvailable()) {
+            this.student = student;
+            this.occupied = true;
+            student.assignRoom(this);
+        } else {
+            console.log(`Room ${this.number} is already occupied.`);
+        }
+    }
+
+    vacateRoom() {
+        this.student = null;
+        this.occupied = false;
+    }
+}
+
+class MaintenanceRequest {
+    constructor(requestId, room, description) {
+        this.requestId = requestId;
+        this.room = room;
+        this.description = description;
+        this.status = 'Pending';
+    }
+
+    completeRequest() {
+        this.status = 'Completed';
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Residence Management System</title>
+    <script src="residence-management.js" defer></script>
+</head>
+<body>
+    <h1>University Residence Management System</h1>
+    <button onclick="demo()">Run Demo</button>
+
+    <script>
+        function demo() {
+            // Create a residence
+            let residence = new Residence("Maple Hall");
+
+            // Create rooms
+            let room101 = new Room(101);
+            let room102 = new Room(102);
+
+            // Add rooms to residence
+            residence.addRoom(room101);
+            residence.addRoom(room102);
+
+            // Create students
+            let student1 = new Student(1, "John Doe", "john@example.com", "S1001");
+            let student2 = new Student(2, "Jane Smith", "jane@example.com", "S1002");
+
+            // Assign rooms to students
+            let availableRoom1 = residence.findAvailableRoom();
+            availableRoom1.assignStudent(student1);
+
+            let availableRoom2 = residence.findAvailableRoom();
+            availableRoom2.assignStudent(student2);
+
+            // Submit maintenance request
+            let request1 = new MaintenanceRequest(1, room101, "Leaky faucet");
+            console.log(request1);
+
+            // Output assignments
+            console.log(student1);
+            console.log(student2);
+            console.log(residence);
+        }
+    </script>
+</body>
+</html>
